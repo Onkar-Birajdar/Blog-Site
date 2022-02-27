@@ -49,8 +49,10 @@ app.get("/", (req, res) => {
 app.get("/home.ejs", (req, res) => {
     res.redirect("/");
 });
+
 app.get("/post.ejs", (req, res) => {
-    res.render("post", { heading: "About", content: aboutContent });
+    console.log(req.body);
+    // res.render("post", { heading: "About", content: aboutContent });
 });
 
 //About

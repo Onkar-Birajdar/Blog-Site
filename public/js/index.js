@@ -1,7 +1,5 @@
-<button onclick="document.querySelector('p').classList.remove('line-clamp-4')">
-    Read more...
-</button>;
-<button onclick="document.querySelector('p').classList.add('line-clamp-4')">
-    Read more...
-</button>;
-console.log("Onkar Birajdar");
+function createPost() {
+    document.getElementsByClassName("hide").classList.remove("line-clamp-4");
+    console.log("Hello wordls");
+}
+console.log("Hello wordls");
