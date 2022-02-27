@@ -1,0 +1,13 @@
+<%- include("./partials/header.ejs") -%>
+<h1>Home</h1>
+<%for (let i = 0; i < posts.length; i++) {%>
+<div>
+    <h2><%=posts[i].heading%></h2>
+   
+    <p class="line-clamp-4">
+        <%=posts[i].content%>
+    </p>
+    <a href="">Read More...</a>
+
+</div>
+<% } %> <%- include("./partials/footer.ejs") -%>
