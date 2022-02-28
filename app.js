@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const _ = require("lodash");
+
 const port = process.env.PORT || 3000;
 const ejs = require("ejs");
 const app = express();
@@ -15,7 +17,7 @@ const aboutContent =
 const contactContent =
     "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
-let blogPost = [
+let blogPosts = [
     {
         heading: "First Post",
         content:
@@ -41,10 +43,9 @@ let blogPost = [
 //root
 app.get("/", (req, res) => {
     res.render("home", {
-        posts: blogPost,
+        posts: blogPosts,
     });
 });
-
 //home
 app.get("/home.ejs", (req, res) => {
     res.redirect("/");
@@ -62,16 +63,24 @@ app.get("/contact.ejs", (req, res) => {
 
 // compose
 app.get("/compose.ejs", (req, res) => {
-    res.render("compose", { heading: "Create a Post 🧠"});
+    res.render("compose", { heading: "Create a Post 🧠" });
 });
 
 app.post("/compose.ejs", (req, res) => {
     let heading = req.body.postHeading;
     let content = req.body.postContent;
-    blogPost.push({ heading, content });
-    console.log("Post Uploaded successfully, Thank you !");
+    blogPosts.push({ heading, content });
     res.redirect("/");
-}); 
+});
+
+app.get("/post/:postId", (req, res) => {
+    let title = (req.params.postId);
+    let item = blogPosts.filter((item) => item.heading.includes(title));
+    res.render("post", {
+        heading: item[0].heading,
+        postContent: item[0].content,
+    });
+});
 
 //Server listen
 app.listen(3000, (req, res) => {

@@ -2,13 +2,12 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
+yarn-debug.log* 
 yarn-error.log*
 lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-git remote set-url origin new.git.https://github.com/Onkar-Birajdar/Blog-Site.git
 
 # Runtime data
 pids
