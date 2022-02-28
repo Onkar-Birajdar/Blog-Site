@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const _ = require("lodash");
+
 const port = process.env.PORT || 3000;
 const ejs = require("ejs");
 const app = express();
@@ -41,17 +43,12 @@ let blogPosts = [
 //root
 app.get("/", (req, res) => {
     res.render("home", {
-        posts: blogPosts
+        posts: blogPosts,
     });
 });
 //home
 app.get("/home.ejs", (req, res) => {
     res.redirect("/");
-});
-
-app.get("/post.ejs", (req, res) => {
-    console.log(req.body);
-    // res.render("post", { heading: "About", content: aboutContent });
 });
 
 //About
@@ -66,7 +63,7 @@ app.get("/contact.ejs", (req, res) => {
 
 // compose
 app.get("/compose.ejs", (req, res) => {
-    res.render("compose", { heading: "Create a Post 🧠"});
+    res.render("compose", { heading: "Create a Post 🧠" });
 });
 
 app.post("/compose.ejs", (req, res) => {
@@ -74,17 +71,18 @@ app.post("/compose.ejs", (req, res) => {
     let content = req.body.postContent;
     blogPosts.push({ heading, content });
     res.redirect("/");
-}); 
+});
 
 app.get("/post/:postId", (req, res) => {
-    let item = blogPosts.filter((item) => item.heading.includes(req.params.postId));
+    let title = (req.params.postId);
+    let item = blogPosts.filter((item) => item.heading.includes(title));
     res.render("post", {
         heading: item[0].heading,
         postContent: item[0].content,
     });
-}); 
+});
 
-//Server listen 
+//Server listen
 app.listen(3000, (req, res) => {
     console.log(`The app is running at ${port}`);
 });
