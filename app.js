@@ -42,6 +42,7 @@ let blogPost = [
 app.get("/", (req, res) => {
     res.render("home", {
         posts: blogPost,
+        async: true
     });
 });
 
@@ -74,7 +75,7 @@ app.post("/compose.ejs", (req, res) => {
     let heading = req.body.postHeading;
     let content = req.body.postContent;
     blogPost.push({ heading, content });
-    console.log("Post Uploaded successfully, Thank you !");
+    console.log(blogPost);
     res.redirect("/");
 }); 
 
