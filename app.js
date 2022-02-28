@@ -15,7 +15,7 @@ const aboutContent =
 const contactContent =
     "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
-let blogPost = [
+let blogPosts = [
     {
         heading: "First Post",
         content:
@@ -41,11 +41,9 @@ let blogPost = [
 //root
 app.get("/", (req, res) => {
     res.render("home", {
-        posts: blogPost,
-        async: true
+        posts: blogPosts
     });
 });
-
 //home
 app.get("/home.ejs", (req, res) => {
     res.redirect("/");
@@ -74,8 +72,8 @@ app.get("/compose.ejs", (req, res) => {
 app.post("/compose.ejs", (req, res) => {
     let heading = req.body.postHeading;
     let content = req.body.postContent;
-    blogPost.push({ heading, content });
-    console.log(blogPost);
+    blogPosts.push({ heading, content });
+    console.log(blogPosts);
     res.redirect("/");
 }); 
 
