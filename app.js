@@ -73,11 +73,18 @@ app.post("/compose.ejs", (req, res) => {
     let heading = req.body.postHeading;
     let content = req.body.postContent;
     blogPosts.push({ heading, content });
-    console.log(blogPosts);
     res.redirect("/");
 }); 
 
-//Server listen
+app.get("/post/:postId", (req, res) => {
+    let item = blogPosts.filter((item) => item.heading.includes(req.params.postId));
+    res.render("post", {
+        heading: item[0].heading,
+        postContent: item[0].content,
+    });
+}); 
+
+//Server listen 
 app.listen(3000, (req, res) => {
     console.log(`The app is running at ${port}`);
 });

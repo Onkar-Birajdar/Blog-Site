@@ -1,13 +1,10 @@
 <%- include("./partials/header.ejs") -%>
 
 <h1>Home</h1>
-<% for (let i = 0; i < posts.length; i++) {%>
-    <h2><%=posts[i].heading%></h2>
-
-    <p class="line-clamp-4"><%=posts[i].content%></p>
-    <a href="#" onclick="createPost()">
-        Read More...
-    </a>
-<% }%>
+<% posts.forEach(function(post){ %> 
+    <H1><%=post.heading%></h1>
+    <p class=".line-clamp-4"><%=post.content%></p>
+    <a href="/post/<%=post.heading%>">Read More...</a>
+<%}) %> 
 
 <%- include("./partials/footer.ejs") -%>
