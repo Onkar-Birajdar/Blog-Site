@@ -42,6 +42,7 @@ let blogPost = [
 app.get("/", (req, res) => {
     res.render("home", {
         posts: blogPost,
+        async: true
     });
 });
 
@@ -49,8 +50,10 @@ app.get("/", (req, res) => {
 app.get("/home.ejs", (req, res) => {
     res.redirect("/");
 });
+
 app.get("/post.ejs", (req, res) => {
-    res.render("post", { heading: "About", content: aboutContent });
+    console.log(req.body);
+    // res.render("post", { heading: "About", content: aboutContent });
 });
 
 //About
@@ -72,7 +75,7 @@ app.post("/compose.ejs", (req, res) => {
     let heading = req.body.postHeading;
     let content = req.body.postContent;
     blogPost.push({ heading, content });
-    console.log("Post Uploaded successfully, Thank you !");
+    console.log(blogPost);
     res.redirect("/");
 }); 
 
