@@ -114,6 +114,6 @@ app.get("/post/:postId", (req, res) => {
 });
 
 //Server listen
-app.listen(3000, (req, res) => {
+app.listen(port, (req, res) => {
     console.log(`The app is running at ${port}`);
 });
