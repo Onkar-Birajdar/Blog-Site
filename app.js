@@ -103,6 +103,7 @@ app.post("/compose.ejs", (req, res) => {
     res.redirect("/");
 });
 
+// custom post rout
 app.get("/post/:postId", (req, res) => {
     let requestedPostId = req.params.postId;
     BlogPost.findOne({ _id: requestedPostId }, function (err, post) {
