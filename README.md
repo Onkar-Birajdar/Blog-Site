@@ -7,12 +7,25 @@ features fo this blog site:
 
 If you are willing to clone this project: 
 
-Do as directed by following 
+### Steps to get it running:
 
-You will be able to view, and compose new blogs.
+##### 1. Fork this repo
 
-To set the server...follow following instructions.
-nodemon app.js
+##### 2. `npm install`
 
-First install all the required packages
+##### 3. Install all the required packages (Refer package.json) 
+
+##### 5. Modify as per your need
+
+#### One time setup:
+
+* `cd repo_name`
+* `git init`
+* `git add .`
+* `git commit -m 'Your message Here'`
+* `git add remote origin 'your_url'`
+* `git push -u origin main/master`
+
+
+
 
